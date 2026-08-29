@@ -117,7 +117,7 @@ export const ProjectLab: React.FC = () => {
                   type="url" 
                   className="input-field" 
                   placeholder="https://github.com/username/project-repo"
-                  defaultValue="https://github.com/shivamsingh"
+                  defaultValue="https://github.com/shivamsingh018/growthpath"
                   onChange={e => setProjectUrl(e.target.value)}
                   pattern="https://.*"
                   required
@@ -135,8 +135,8 @@ export const ProjectLab: React.FC = () => {
                 <input 
                   type="url" 
                   className="input-field" 
-                  placeholder="https://docs.google.com/document/d/..."
-                  defaultValue="https://docs.google.com/document/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit"
+                  placeholder="https://github.com/username/repo/blob/main/README.md"
+                  defaultValue="https://github.com/shivamsingh018/growthpath/blob/main/README.md"
                   pattern="https://.*"
                   required
                 />
@@ -154,7 +154,7 @@ export const ProjectLab: React.FC = () => {
                   type="url" 
                   className="input-field" 
                   placeholder="https://my-project-app.vercel.app"
-                  defaultValue="https://vitejs.dev"
+                  defaultValue="https://growthpath-app.vercel.app"
                   pattern="https://.*"
                   required
                 />
