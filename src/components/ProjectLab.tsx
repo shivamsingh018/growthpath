@@ -154,7 +154,7 @@ export const ProjectLab: React.FC = () => {
                   type="url" 
                   className="input-field" 
                   placeholder="https://my-project-app.vercel.app"
-                  defaultValue="https://growthpath-app.vercel.app"
+                  defaultValue="https://growthpath-shivamsingh018.vercel.app"
                   pattern="https://.*"
                   required
                 />
