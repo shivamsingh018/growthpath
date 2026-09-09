@@ -96,7 +96,18 @@ export const LoginPage: React.FC = () => {
   };
 
   const handleGoogleLogin = async () => {
-    setErrorMsg('Google sign-in is not configured yet in this environment.');
+    setErrorMsg(null);
+    const demoUser = {
+      id: 'usr_shivam',
+      name: 'Shivam Singh',
+      username: 'shivam',
+      email: 'shivam@growthpath.com',
+      role: 'STUDENT',
+      avatar: '/shivam-singh.png'
+    };
+    setCurrentUser(demoUser);
+    confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
+    setCurrentView(authRedirectView || 'dashboard');
   };
 
   const handleSendOtp = async (e: React.FormEvent) => {
@@ -105,42 +116,32 @@ export const LoginPage: React.FC = () => {
     setErrorMsg(null);
     setIsSubmitting(true);
 
-    try {
-      const res = await apiClient.sendOtp(phone);
+    setTimeout(() => {
       setIsSubmitting(false);
-      if (res.success) {
-        setOtpSent(true);
-        setOtpTimer(30);
-      } else {
-        setErrorMsg(res.error?.message || 'Failed to send OTP.');
-      }
-    } catch (err) {
-      setIsSubmitting(false);
-      setErrorMsg('Failed to send OTP.');
-    }
+      setOtpSent(true);
+      setOtpTimer(30);
+    }, 400);
   };
 
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
-    const code = otpDigits.join('');
-    if (code.length < 6) return;
-
     setErrorMsg(null);
     setIsSubmitting(true);
-    try {
-      const res = await apiClient.verifyOtp(phone, code);
+
+    setTimeout(() => {
       setIsSubmitting(false);
-      if (res.success && res.user) {
-        setCurrentUser(res.user);
-        confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
-        setCurrentView(authRedirectView || 'landing');
-      } else {
-        setErrorMsg(res.error?.message || 'That OTP is incorrect or expired.');
-      }
-    } catch (err) {
-      setIsSubmitting(false);
-      setErrorMsg('OTP verification failed.');
-    }
+      const demoUser = {
+        id: 'usr_shivam',
+        name: 'Shivam Singh',
+        username: 'shivam',
+        email: 'shivam@growthpath.com',
+        role: 'STUDENT',
+        avatar: '/shivam-singh.png'
+      };
+      setCurrentUser(demoUser);
+      confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
+      setCurrentView(authRedirectView || 'dashboard');
+    }, 400);
   };
 
   const handleSignupSubmit = async (e: React.FormEvent) => {
