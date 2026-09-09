@@ -68,8 +68,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCurrentUserRaw(user);
     if (user) {
       localStorage.setItem('growthpath_active_user_v1', JSON.stringify(user));
+      setCurrentView((prev) => (prev === 'login' ? (authRedirectView || 'dashboard') : prev));
     } else {
       localStorage.removeItem('growthpath_active_user_v1');
+      setCurrentView('login');
     }
   };
 
